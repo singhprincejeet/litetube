@@ -1,0 +1,10 @@
+<div class="center"> 
+    <p class="title">Litetube</p>
+    <div class="container">
+        <form fxLayout="row" fxLayoutAlign="start center" class="content">
+            <input class = "search-box blocks" [(ngModel)] = "searchInput" 
+            name="searchInput" type = "text" fxFlex = "80%" required>
+            <button class="blocks" type = "submit" fxFlex (click)="search()">Search</button>
+        </form>
+    </div>
+</div>
