@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  searchInput;
+  @Input() searchInput: string;
 
   constructor(private router: Router) { }
 
@@ -17,6 +17,10 @@ export class NavBarComponent implements OnInit {
 
   search() {
     this.router.navigate(['/results', this.searchInput])
+  }
+
+  goToYoutube() {
+    window.location.href = 'https://www.youtube.com/results?search_query=' + this.searchInput;
   }
 
 }

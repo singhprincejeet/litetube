@@ -2,9 +2,7 @@
     <form fxLayout fxLayoutAlign="start center" class="content">
         <input class = "search-box blocks" [(ngModel)] = "searchInput" 
         name="searchInput" type = "text" fxFlex = "80%" required>
-        <button class="blocks search-button" type = "submit" fxFlex = "10%" (click)="search()">Search</button>
-        <a href="https://www.youtube.com/results?search_query={{query}}">
-          <button class="blocks fa fa-youtube fa-3x youtube-button" fxFlex></button>
-        </a>
+        <button class="blocks search-button" type = "submit" fxFlex (click)="search()">Search</button>
+        <button class="blocks fa fa-youtube fa-3x youtube-button" (click) = "goToYoutube()" fxFlex></button>
     </form>
 </div>
