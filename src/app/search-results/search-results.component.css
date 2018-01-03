@@ -1,0 +1,26 @@
+.video-box{
+    margin: 1vh 0;
+}
+
+.thumbnail{
+    margin-right: 1vw;
+}
+
+.video-title{
+    font-size: large;
+}
+
+.video-data{
+    font-size: small
+}
+
+.video-desc{
+}
+
+.search-box{
+    height: 8vh;
+}
+
+.search-button{
+    height: 9vh
+}

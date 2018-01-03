@@ -7,11 +7,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutes } from 'app/app.routing';
 import { MaterialModule } from 'app/app.material';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchService } from 'app/search.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,7 @@ import { MaterialModule } from 'app/app.material';
     FormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

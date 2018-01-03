@@ -1,0 +1,29 @@
+<div class="container">
+    <form fxLayout fxLayoutAlign="start center" class="content">
+        <input class = "search-box blocks" [(ngModel)] = "searchInput" 
+        name="searchInput" type = "text" fxFlex = "80%" required>
+        <button class="blocks search-button" type = "submit" fxFlex (click)="search()">Search</button>
+    </form>
+</div>
+<div *ngIf="gotData">
+  <ng-container *ngFor="let video of videoList">
+    <div class="video-box" *ngIf="video.id.kind == 'youtube#video' ">
+        <div fxLayout fxLayoutAlign="start" class="content">
+            <img class = "blocks thumbnail" src={{video.snippet.thumbnails.default.url}} fxFlex = "20%">
+            <div>
+                <a class="video-title" [routerLink]="['/']">{{video.snippet.title}}</a>
+                <p class="video-data">
+                  <a [routerLink]="['/']">
+                    {{video.snippet.channelTitle}}
+                  </a>
+                  | 
+                  {{video.snippet.publishedAt | date: 'mediumDate'}}
+                </p>
+                <p class="video-desc" fxHide.xs="true">
+                  {{video.snippet.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleApiService } from 'ng-gapi';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,15 @@ import { GoogleApiService } from 'ng-gapi';
 })
 export class HomeComponent implements OnInit {
 
-  searchInput = 'sh';
+  searchInput = '';
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
   }
 
   search() {
+    this.router.navigate(['/results', this.searchInput])
   }
 }
