@@ -1,4 +1,4 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar [searchInput] = "query"></app-nav-bar>
 <div *ngIf="gotData">
   <ng-container *ngFor="let video of videoList">
     <div class="video-box" *ngIf="video.id.kind == 'youtube#video' ">

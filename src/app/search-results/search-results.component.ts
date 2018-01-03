@@ -1,11 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
 import { SearchService } from 'app/search.service';
+import { NavBarComponent } from 'app/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+  styleUrls: ['./search-results.component.css'],
 })
 export class SearchResultsComponent implements OnInit {
 
@@ -16,11 +17,11 @@ export class SearchResultsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService,
     private changeDetector: ChangeDetectorRef) {
+  }
 
   ngOnInit() {
     this.subscribeToRoute = this.activatedRoute.params.subscribe(params => {
       this.query = params['query'];
-      this.searchInput = this.query;
       this.makeQuery();
     })
   }
