@@ -9,12 +9,14 @@ import { AppRoutes } from 'app/app.routing';
 import { MaterialModule } from 'app/app.material';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchService } from 'app/search.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
