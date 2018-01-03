@@ -24,14 +24,11 @@ export class SearchResultsComponent implements OnInit {
       this.query = params['query'];
       this.searchInput = this.query;
 
-      const response = this.searchService.search(this.query);
-
-      response.then((res) => {
-        this.videoList = res['items'];
+      const response = this.searchService.search(this.query, (res) => {
+        this.videoList = res.items;
+        console.log(this.videoList)
         this.gotData = true;
-      }).catch((err) => {
-        console.log(err)
-      })
+      });
     })
   }
 

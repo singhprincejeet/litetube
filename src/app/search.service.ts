@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
+import { GoogleApiService } from 'ng-gapi';
 
 import auth from 'app/auth';
 import { promise } from 'selenium-webdriver';
 
-declare var gapi;
-
 @Injectable()
 export class SearchService {
 
-  constructor() {
+  constructor(private gapiService: GoogleApiService) {
    }
 
   private removeEmptyParams(params) {
@@ -20,10 +19,7 @@ export class SearchService {
     return params;
   }
 
-  search(query) {
-
-    const v = gapi;
-
+  buildParams(query) {
     const params = {
       'maxResults': '25',
       'part': 'snippet',
@@ -33,21 +29,33 @@ export class SearchService {
 
     this.removeEmptyParams(params)
 
+    return params;
+  }
+
+  gapiInit(gapi) {
     gapi.client.init({
       'apiKey': auth.client_id,
       'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
     })
+  }
 
-    return new Promise((resolve, reject) => {
+  search(query, callback) {
+
+    const params = this.buildParams(query)
+
+    this.gapiService.onLoad().subscribe(() => {
+
+      this.gapiInit(gapi)
+
       gapi.client.request({
         method: 'GET',
         params: params,
         path: '/youtube/v3/search'
       })
       .then((response) => {
-        resolve(response.result)
+        callback(response.result)
       }, function(reason) {
-        reject(reason.result.error.message);
+        callback(reason.result.error.message);
       })
     })
 
