@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute } from '@angular/router';
 import { SearchService } from 'app/search.service';
 
 @Component({
@@ -10,14 +10,12 @@ import { SearchService } from 'app/search.service';
 export class SearchResultsComponent implements OnInit {
 
   query;
-  searchInput;
   private subscribeToRoute;
   videoList;
   gotData = false;
 
   constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService,
-    private router: Router, private changeDetector: ChangeDetectorRef) {
-  }
+    private changeDetector: ChangeDetectorRef) {
 
   ngOnInit() {
     this.subscribeToRoute = this.activatedRoute.params.subscribe(params => {
@@ -37,10 +35,6 @@ export class SearchResultsComponent implements OnInit {
         this.changeDetector.detectChanges();
       }
     });
-  }
-
-  search() {
-    this.router.navigate(['/results', this.searchInput])
   }
 
 }
