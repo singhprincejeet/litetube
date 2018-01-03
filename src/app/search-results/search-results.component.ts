@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { SearchService } from 'app/search.service';
 
@@ -13,23 +13,30 @@ export class SearchResultsComponent implements OnInit {
   searchInput;
   private subscribeToRoute;
   videoList;
-  gotData;
+  gotData = false;
 
   constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService,
-    private router: Router) {
+    private router: Router, private changeDetector: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.subscribeToRoute = this.activatedRoute.params.subscribe(params => {
       this.query = params['query'];
       this.searchInput = this.query;
-
-      const response = this.searchService.search(this.query, (res) => {
-        this.videoList = res.items;
-        console.log(this.videoList)
-        this.gotData = true;
-      });
+      this.makeQuery();
     })
+  }
+
+  makeQuery() {
+    const response = this.searchService.search(this.query, (res, error) => {
+      if (error) {
+        console.log(error);
+      }else {
+        this.videoList = res.items;
+        this.gotData = true;
+        this.changeDetector.detectChanges();
+      }
+    });
   }
 
   search() {

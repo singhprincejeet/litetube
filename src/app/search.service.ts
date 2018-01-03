@@ -47,15 +47,20 @@ export class SearchService {
 
       this.gapiInit(gapi)
 
+      let result;
+      let error;
+
       gapi.client.request({
         method: 'GET',
         params: params,
         path: '/youtube/v3/search'
       })
       .then((response) => {
-        callback(response.result)
+        result = response.result;
       }, function(reason) {
-        callback(reason.result.error.message);
+        error = reason.result.error.message;
+      }).then(() => {
+        callback(result, error)
       })
     })
 
