@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute } from '@angular/router';
 import { SearchService } from 'app/search.service';
 
 @Component({
@@ -10,19 +10,16 @@ import { SearchService } from 'app/search.service';
 export class SearchResultsComponent implements OnInit {
 
   query;
-  searchInput;
   private subscribeToRoute;
   videoList;
   gotData;
 
-  constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService,
-    private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService) {
   }
 
   ngOnInit() {
     this.subscribeToRoute = this.activatedRoute.params.subscribe(params => {
       this.query = params['query'];
-      this.searchInput = this.query;
 
       const response = this.searchService.search(this.query);
 
@@ -33,10 +30,6 @@ export class SearchResultsComponent implements OnInit {
         console.log(err)
       })
     })
-  }
-
-  search() {
-    this.router.navigate(['/results', this.searchInput])
   }
 
 }
