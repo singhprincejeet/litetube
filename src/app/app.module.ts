@@ -12,13 +12,15 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { SearchService } from 'app/search.service';
 import auth from 'app/auth';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchResultsComponent,
-    NavBarComponent
+    NavBarComponent,
+    VideoComponent,
   ],
   imports: [
     BrowserModule,

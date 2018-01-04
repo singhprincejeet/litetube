@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import {ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
+import {ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from 'app/search.service';
 import { NavBarComponent } from 'app/nav-bar/nav-bar.component';
 
@@ -16,7 +16,7 @@ export class SearchResultsComponent implements OnInit {
   gotData = false;
 
   constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService,
-    private changeDetector: ChangeDetectorRef) {
+    private changeDetector: ChangeDetectorRef, private router: Router, private zone: NgZone) {
   }
 
   ngOnInit() {
@@ -36,6 +36,10 @@ export class SearchResultsComponent implements OnInit {
         this.changeDetector.detectChanges();
       }
     });
+  }
+
+  goToVideo(videoId) {
+    this.zone.run(() => this.router.navigate(['/video', videoId]))
   }
 
 }
