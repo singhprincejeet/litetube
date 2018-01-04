@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   @Input() searchInput: string;
+  @Input() videoId: string;
 
   constructor(private router: Router) { }
 
@@ -20,7 +21,11 @@ export class NavBarComponent implements OnInit {
   }
 
   goToYoutube() {
-    window.location.href = 'https://www.youtube.com/results?search_query=' + this.searchInput;
+    if (this.searchInput) {
+      window.location.href = 'https://www.youtube.com/results?search_query=' + this.searchInput;
+    } else if (this.videoId) {
+      window.location.href = 'https://www.youtube.com/watch?v=' + this.videoId;
+    }
   }
 
 }
