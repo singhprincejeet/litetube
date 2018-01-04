@@ -1,4 +1,4 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar [videoId]='videoId'></app-nav-bar>
 <div class="content videoWrapper" *ngIf="gotData" fxLayout fxHide.xs="true" 
     fxLayoutAlign="center center">
     <iframe [src]="safeUrl" frameborder="0" gesture="media" allow="encrypted-media" 
