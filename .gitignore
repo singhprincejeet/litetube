@@ -46,9 +46,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# auth files
-src/app/auth.ts
-
 # editor config
 .editorconfig
 

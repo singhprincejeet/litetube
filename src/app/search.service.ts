@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { GoogleApiService } from 'ng-gapi';
 
 import auth from 'app/auth';
-import { promise } from 'selenium-webdriver';
 
 @Injectable()
 export class SearchService {
