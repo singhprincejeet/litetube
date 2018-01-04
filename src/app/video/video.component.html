@@ -1,0 +1,11 @@
+<app-nav-bar></app-nav-bar>
+<div class="content videoWrapper" *ngIf="gotData" fxLayout fxHide.xs="true" 
+    fxLayoutAlign="center center">
+    <iframe [src]="safeUrl" frameborder="0" gesture="media" allow="encrypted-media" 
+        allowfullscreen></iframe>
+</div>
+<div class="content videoWrapperMobile" *ngIf="gotData" fxLayout fxHide.sm="true" fxHide.lg="true"
+    fxHide.xl="true" fxHide.md="true" fxLayoutAlign="center center">
+    <iframe [src]="safeUrl" frameborder="0" gesture="media" allow="encrypted-media" 
+        allowfullscreen></iframe>
+</div>

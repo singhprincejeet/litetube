@@ -3,9 +3,9 @@
   <ng-container *ngFor="let video of videoList">
     <div class="video-box" *ngIf="video.id.kind == 'youtube#video' ">
         <div fxLayout fxLayoutAlign="start" class="content">
-            <img class = "blocks thumbnail" src={{video.snippet.thumbnails.default.url}} fxFlex = "20%">
+            <img class = "blocks thumbnail" src={{video.snippet.thumbnails.default.url}} (click)="goToVideo(video.id.videoId)" fxFlex = "20%">
             <div>
-                <a class="video-title" [routerLink]="['/']">{{video.snippet.title}}</a>
+                <p class="video-title" (click)="goToVideo(video.id.videoId)">{{video.snippet.title}}</p>
                 <p class="video-data">
                   <a [routerLink]="['/']">
                     {{video.snippet.channelTitle}}

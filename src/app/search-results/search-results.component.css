@@ -4,10 +4,13 @@
 
 .thumbnail{
     margin-right: 1vw;
+    cursor: pointer;
 }
 
 .video-title{
     font-size: large;
+    cursor: pointer;
+    color: blue;
 }
 
 .video-data{
