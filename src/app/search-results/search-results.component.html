@@ -7,7 +7,7 @@
             <div>
                 <p class="video-title" (click)="goToVideo(video.id.videoId)">{{video.snippet.title}}</p>
                 <p class="video-data">
-                  {video.snippet.channelTitle}} 
+                  {{video.snippet.channelTitle}} 
                   | 
                   {{video.snippet.publishedAt | date: 'mediumDate'}}
                 </p>
