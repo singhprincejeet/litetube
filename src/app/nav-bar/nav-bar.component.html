@@ -1,6 +1,6 @@
 <div class="container">
     <form fxLayout fxLayoutAlign="start center" class="content">
-        <button class="fa fa-home button fa-2x" type="button" [routerLink] = "['/']"></button>
+        <button class="blocks fa fa-home button fa-2x" type="button" [routerLink] = "['/']" fxFlex></button>
         <input class = "search-box blocks" [(ngModel)] = "searchInput" 
         name="searchInput" type = "text" fxFlex = "70%" fxFlex.xs = "41%" required>
         <button class="blocks button" type = "submit" fxFlex (click)="search()">Search</button>
