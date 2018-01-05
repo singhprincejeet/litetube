@@ -1,9 +1,9 @@
 <div class="container">
     <form fxLayout fxLayoutAlign="start center" class="content">
-        <button class="fa fa-home fa-3x" type="button" [routerLink] = "['/']"></button>
+        <button class="fa fa-home button fa-2x" type="button" [routerLink] = "['/']"></button>
         <input class = "search-box blocks" [(ngModel)] = "searchInput" 
         name="searchInput" type = "text" fxFlex = "70%" fxFlex.xs = "41%" required>
-        <button class="blocks search-button" type = "submit" fxFlex (click)="search()">Search</button>
-        <button class="blocks fa fa-youtube fa-3x youtube-button" type="button" (click) = "goToYoutube()" fxFlex></button>
+        <button class="blocks button" type = "submit" fxFlex (click)="search()">Search</button>
+        <button class="blocks fa fa-youtube fa-2x button" type="button" (click) = "goToYoutube()" fxFlex></button>
     </form>
 </div>
